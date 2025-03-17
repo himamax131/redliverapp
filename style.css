@@ -1,0 +1,30 @@
+table {
+    width: 80%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #0044cc;
+    color: white;
+}
+
+td a {
+    text-decoration: none;
+    color: #0044cc;
+    font-weight: bold;
+}
+
+td a:hover {
+    text-decoration: underline;
+}
+
+h2, h3 {
+    text-align: center;
+}
