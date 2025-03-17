@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📋 تفاصيل المباراة</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script>
+        function loadMatchDetails() {
+            const params = new URLSearchParams(window.location.search);
+            const matchId = params.get("match");
+
+            let matchData = {
+                "1": {
+                    "team1": "ريد ليفر",
+                    "team2": "النسور",
+                    "score": "2 - 1",
+                    "goals": [
+                        { "team": "ريد ليفر", "player": "محمد أحمد", "minute": "12" },
+                        { "team": "النسور", "player": "علي سالم", "minute": "35" },
+                        { "team": "ريد ليفر", "player": "سالم يوسف", "minute": "80" }
+                    ]
+                },
+                "2": {
+                    "team1": "الهلال",
+                    "team2": "الاتحاد",
+                    "score": "0 - 3",
+                    "goals": [
+                        { "team": "الاتحاد", "player": "ياسين عمر", "minute": "20" },
+                        { "team": "الاتحاد", "player": "أحمد خالد", "minute": "50" },
+                        { "team": "الاتحاد", "player": "عبدالله محمود", "minute": "70" }
+                    ]
+                }
+            };
+
+            let match = matchData[matchId];
+            if (match) {
+                document.getElementById("match-title").textContent = `${match.team1} vs ${match.team2}`;
+                document.getElementById("match-score").textContent = `⚽ النتيجة: ${match.score}`;
+
+                let goalsList = document.getElementById("goals-list");
+                match.goals.forEach(goal => {
+                    let li = document.createElement("li");
+                    li.textContent = `${goal.team}: ${goal.player} ⚽ (${goal.minute} دقيقة)`;
+                    goalsList.appendChild(li);
+                });
+            } else {
+                document.getElementById("match-title").textContent = "❌ المباراة غير موجودة!";
+            }
+        }
+    </script>
+</head>
+<body onload="loadMatchDetails()">
+
+    <header>
+        <h1 id="match-title">📋 تفاصيل المباراة</h1>
+        <a href="matches.html">⬅ العودة</a>
+    </header>
+
+    <h2 id="match-score"></h2>
+
+    <h3>⚽ الأهداف:</h3>
+    <ul id="goals-list"></ul>
+
+</body>
+</html>
